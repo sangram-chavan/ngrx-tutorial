@@ -1,0 +1,28 @@
+{
+  "root": "apps/tutorials-e2e",
+  "sourceRoot": "apps/tutorials-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/tutorials-e2e/cypress.json",
+        "devServerTarget": "tutorials:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "tutorials:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/tutorials-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["tutorials"]
+}

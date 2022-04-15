@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "tutorials": "apps/tutorials",
+    "tutorials-e2e": "apps/tutorials-e2e"
+  }
+}

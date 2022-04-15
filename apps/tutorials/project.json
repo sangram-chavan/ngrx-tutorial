@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/tutorials",
+  "sourceRoot": "apps/tutorials/src",
+  "prefix": "ngrx-tutorial",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/tutorials",
+        "index": "apps/tutorials/src/index.html",
+        "main": "apps/tutorials/src/main.ts",
+        "polyfills": "apps/tutorials/src/polyfills.ts",
+        "tsConfig": "apps/tutorials/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/tutorials/src/favicon.ico",
+          "apps/tutorials/src/assets"
+        ],
+        "styles": ["apps/tutorials/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/tutorials/src/environments/environment.ts",
+              "with": "apps/tutorials/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "tutorials:build:production"
+        },
+        "development": {
+          "browserTarget": "tutorials:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "tutorials:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/tutorials/src/**/*.ts",
+          "apps/tutorials/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/tutorials"],
+      "options": {
+        "jestConfig": "apps/tutorials/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
